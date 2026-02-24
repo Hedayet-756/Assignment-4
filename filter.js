@@ -31,8 +31,8 @@ updateCounters();
 function filterJobs(status) {
     const jobItems = document.querySelectorAll('.job-item');
     let visibleCount = 0;
-    for(item of jobItems){
-        if(item.getAttribute('data-status') === status){
+    for(let item of jobItems){
+        if(status === 'all' || item.getAttribute('data-status') === status){
             item.classList.remove('hidden');
             visibleCount++;
         }
@@ -73,12 +73,12 @@ document.addEventListener('click', function(event){
     if (event.target.innerText.toLowerCase() === 'interview') {
         card.setAttribute('data-status', 'interview');
         statusLabel.innerText = 'Interview';
-        statusLabel.className = 'text-[16px] text-green-700 uppercase btn bg-green-100';
+        statusLabel.className = 'btn-status text-[16px] text-green-700 uppercase btn bg-green-100';
     } 
     else if (event.target.innerText.toLowerCase() === 'rejected') {
         card.setAttribute('data-status', 'rejected');
         statusLabel.innerText = 'Rejected';
-        statusLabel.className = 'text-[16px] text-red-700 uppercase btn bg-red-100';
+        statusLabel.className = 'btn-status text-[16px] text-red-700 uppercase btn bg-red-100';
     }
     else if (event.target.closest('.btn-delete')) {
         card.remove();
